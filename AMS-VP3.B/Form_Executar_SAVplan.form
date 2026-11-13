@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "label": "Executou o SAVplan com sucesso?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_18zn0wi",
+        "columns": null
+      },
+      "id": "Field_11277b8",
+      "key": "checkbox_bf5pn"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Executar_SAVplan",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.51.0"
+  },
+  "schemaVersion": 19
+}

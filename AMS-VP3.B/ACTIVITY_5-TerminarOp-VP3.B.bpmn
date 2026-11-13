@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0wak68m" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.51.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:collaboration id="Collaboration_Activity_TerminarOp">
+    <bpmn:participant id="Participant_0j8iqyt" name="Coordenador" processRef="Process_0e4m8me" />
+    <bpmn:participant id="Participant_173z2uq" name="Xmiddle" />
+    <bpmn:messageFlow id="Flow_16tx878" sourceRef="Event_1tuj202" targetRef="Participant_173z2uq" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0e4m8me" isExecutable="true">
+    <bpmn:startEvent id="Event_01u4sdz">
+      <bpmn:outgoing>Flow_1wrfr3j</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1tuj202" name="Submeter relatórios através das aplicações usadas">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Msg_Submete_Relatorios" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wrfr3j</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_16yr97j" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1wrfr3j" sourceRef="Event_01u4sdz" targetRef="Event_1tuj202" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_Activity_TerminarOp">
+      <bpmndi:BPMNShape id="Participant_0j8iqyt_di" bpmnElement="Participant_0j8iqyt" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="600" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01u4sdz_di" bpmnElement="Event_01u4sdz">
+        <dc:Bounds x="212" y="192" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1tuj202_di" bpmnElement="Event_1tuj202">
+        <dc:Bounds x="332" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="307" y="116" width="85" height="66" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1wrfr3j_di" bpmnElement="Flow_1wrfr3j">
+        <di:waypoint x="248" y="210" />
+        <di:waypoint x="332" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_173z2uq_di" bpmnElement="Participant_173z2uq" isHorizontal="true">
+        <dc:Bounds x="260" y="420" width="400" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_16tx878_di" bpmnElement="Flow_16tx878">
+        <di:waypoint x="350" y="228" />
+        <di:waypoint x="350" y="420" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

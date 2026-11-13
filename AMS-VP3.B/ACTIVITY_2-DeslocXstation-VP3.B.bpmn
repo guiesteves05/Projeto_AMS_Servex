@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0rtrgi0" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.51.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:collaboration id="Collaboration_Activity_DeslocXstation">
+    <bpmn:participant id="Participant_1svnxaw" name="Coordenador" processRef="Process_0iv7cxp" />
+    <bpmn:participant id="Participant_1tzw1qz" name="Motorista" processRef="Process_1ld50j6" />
+    <bpmn:messageFlow id="Flow_19ux7gb" sourceRef="Event_16hzl9p" targetRef="Event_08kq12q" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0iv7cxp" isExecutable="true">
+    <bpmn:startEvent id="Event_08kq12q" name="Chegada à Xstation">
+      <bpmn:outgoing>Flow_0xvumkr</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0fxa680" messageRef="Message_16qr6ak" />
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_16f7xg9">
+      <bpmn:incoming>Flow_0xvumkr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0xvumkr" sourceRef="Event_08kq12q" targetRef="Event_16f7xg9" />
+  </bpmn:process>
+  <bpmn:process id="Process_1ld50j6" isExecutable="true">
+    <bpmn:startEvent id="Event_1v9lb5d">
+      <bpmn:outgoing>Flow_01j2qot</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0solvmu" name="Dirigir a carrinha até à Xstation">
+      <bpmn:incoming>Flow_01j2qot</bpmn:incoming>
+      <bpmn:outgoing>Flow_107qqcj</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_16hzl9p" name="Informa chegada à Xstation">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Msg_Avisa_Chegada_Xstation" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_107qqcj</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_07ad4v6" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_01j2qot" sourceRef="Event_1v9lb5d" targetRef="Activity_0solvmu" />
+    <bpmn:sequenceFlow id="Flow_107qqcj" sourceRef="Activity_0solvmu" targetRef="Event_16hzl9p" />
+  </bpmn:process>
+  <bpmn:message id="Message_16qr6ak" name="Msg_Recebe_Aviso_da_Chegada_Xstation" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_Activity_DeslocXstation">
+      <bpmndi:BPMNShape id="BPMNShape_0ofq8tu" bpmnElement="Participant_1svnxaw" isHorizontal="true">
+        <dc:Bounds x="160" y="70" width="650" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_08kq12q_di" bpmnElement="Event_08kq12q">
+        <dc:Bounds x="232" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="223" y="135" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_16f7xg9_di" bpmnElement="Event_16f7xg9">
+        <dc:Bounds x="352" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0xvumkr_di" bpmnElement="Flow_0xvumkr">
+        <di:waypoint x="268" y="190" />
+        <di:waypoint x="352" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_1tzw1qz_di" bpmnElement="Participant_1tzw1qz" isHorizontal="true">
+        <dc:Bounds x="160" y="350" width="650" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1v9lb5d_di" bpmnElement="Event_1v9lb5d">
+        <dc:Bounds x="232" y="450" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0solvmu_di" bpmnElement="Activity_0solvmu">
+        <dc:Bounds x="370" y="428" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_16hzl9p_di" bpmnElement="Event_16hzl9p">
+        <dc:Bounds x="592" y="450" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="569" y="493" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_01j2qot_di" bpmnElement="Flow_01j2qot">
+        <di:waypoint x="268" y="468" />
+        <di:waypoint x="370" y="468" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_107qqcj_di" bpmnElement="Flow_107qqcj">
+        <di:waypoint x="470" y="468" />
+        <di:waypoint x="592" y="468" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19ux7gb_di" bpmnElement="Flow_19ux7gb">
+        <di:waypoint x="610" y="450" />
+        <di:waypoint x="610" y="340" />
+        <di:waypoint x="250" y="340" />
+        <di:waypoint x="250" y="208" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

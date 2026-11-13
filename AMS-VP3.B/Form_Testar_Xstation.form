@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "label": "Testou a Xstation (com apoio do Xmiddle-smart) com sucesso?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1v3k5ro",
+        "columns": null
+      },
+      "id": "Field_15jx4xb",
+      "key": "checkbox_jnllpp"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Testar_Xstation",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.51.0"
+  },
+  "schemaVersion": 19
+}

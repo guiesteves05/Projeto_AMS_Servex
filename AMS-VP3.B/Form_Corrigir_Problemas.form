@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "label": "Corrigiu problemas com sucesso?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1eui1me",
+        "columns": null
+      },
+      "id": "Field_1ur9tkt",
+      "key": "checkbox_lyhmte"
+    }
+  ],
+  "type": "default",
+  "id": "Form_04wni60",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.51.0"
+  },
+  "schemaVersion": 19
+}

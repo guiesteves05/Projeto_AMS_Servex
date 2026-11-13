@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "label": "Manutenção concluída com sucesso?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_038k8aq",
+        "columns": null
+      },
+      "id": "Field_0taf1g6",
+      "key": "checkbox_5ce0og"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Manutencao",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.51.0"
+  },
+  "schemaVersion": 19
+}

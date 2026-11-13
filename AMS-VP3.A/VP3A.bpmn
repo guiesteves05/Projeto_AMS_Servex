@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1brqfu7" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.51.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:collaboration id="Collaboration_1gg3vcm">
+    <bpmn:participant id="Participant_06jle1r" name="Equipas" processRef="Process_17mp4ra" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_17mp4ra" isExecutable="true">
+    <bpmn:callActivity id="Activity_19febmr" name="Preparação na base">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="Collaboration_0ju794v" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_19zfb36</bpmn:incoming>
+      <bpmn:outgoing>Flow_12mdwwo</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Activity_1utllbo" name="Deslocação para a XStation">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="Collaboration_11x0610" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12mdwwo</bpmn:incoming>
+      <bpmn:outgoing>Flow_1aziluc</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:startEvent id="Event_0xwesm8">
+      <bpmn:outgoing>Flow_19zfb36</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_19zfb36" sourceRef="Event_0xwesm8" targetRef="Activity_19febmr" />
+    <bpmn:sequenceFlow id="Flow_12mdwwo" sourceRef="Activity_19febmr" targetRef="Activity_1utllbo" />
+    <bpmn:sequenceFlow id="Flow_1aziluc" sourceRef="Activity_1utllbo" targetRef="Activity_0m04b4q" />
+    <bpmn:callActivity id="Activity_07mnphi" name="Fecho da operação na base">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="Collaboration_1drhzh9" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1nvtrm3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lxa94g</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:endEvent id="Event_0jbxg3r">
+      <bpmn:incoming>Flow_0lxa94g</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_06bvkwg" sourceRef="Activity_0m04b4q" targetRef="Activity_0ckk034" />
+    <bpmn:sequenceFlow id="Flow_1nvtrm3" sourceRef="Activity_0ckk034" targetRef="Activity_07mnphi" />
+    <bpmn:sequenceFlow id="Flow_0lxa94g" sourceRef="Activity_07mnphi" targetRef="Event_0jbxg3r" />
+    <bpmn:callActivity id="Activity_0m04b4q" name="Trabalhos na XStation">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="Collaboration_1qkvfpg" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1aziluc</bpmn:incoming>
+      <bpmn:outgoing>Flow_06bvkwg</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Activity_0ckk034" name="Retorno à base">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="Collaboration_0bb7fjs" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06bvkwg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nvtrm3</bpmn:outgoing>
+    </bpmn:callActivity>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1gg3vcm">
+      <bpmndi:BPMNShape id="Participant_06jle1r_di" bpmnElement="Participant_06jle1r" isHorizontal="true">
+        <dc:Bounds x="132" y="80" width="1108" height="170" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19febmr_di" bpmnElement="Activity_19febmr">
+        <dc:Bounds x="300" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ihma8d" bpmnElement="Activity_1utllbo">
+        <dc:Bounds x="460" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xwesm8_di" bpmnElement="Event_0xwesm8">
+        <dc:Bounds x="202" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0q8614c" bpmnElement="Activity_07mnphi">
+        <dc:Bounds x="960" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jbxg3r_di" bpmnElement="Event_0jbxg3r">
+        <dc:Bounds x="1132" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0v0lm1k" bpmnElement="Activity_0m04b4q">
+        <dc:Bounds x="630" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0nh9kku" bpmnElement="Activity_0ckk034">
+        <dc:Bounds x="800" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_19zfb36_di" bpmnElement="Flow_19zfb36">
+        <di:waypoint x="238" y="160" />
+        <di:waypoint x="300" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12mdwwo_di" bpmnElement="Flow_12mdwwo">
+        <di:waypoint x="400" y="160" />
+        <di:waypoint x="460" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1aziluc_di" bpmnElement="Flow_1aziluc">
+        <di:waypoint x="560" y="160" />
+        <di:waypoint x="630" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06bvkwg_di" bpmnElement="Flow_06bvkwg">
+        <di:waypoint x="730" y="160" />
+        <di:waypoint x="800" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nvtrm3_di" bpmnElement="Flow_1nvtrm3">
+        <di:waypoint x="900" y="160" />
+        <di:waypoint x="960" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lxa94g_di" bpmnElement="Flow_0lxa94g">
+        <di:waypoint x="1060" y="160" />
+        <di:waypoint x="1132" y="160" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0b7wxyf" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.51.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:collaboration id="Collaboration_1drhzh9">
+    <bpmn:participant id="Participant_0dggy4c" name="XoperationTeam" processRef="Process_0kjqsfm" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0kjqsfm" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_06j4q04">
+      <bpmn:lane id="Lane_1wppc41" name="Coordenador">
+        <bpmn:flowNodeRef>Event_0hti0w8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1m011py</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0h6m8m6</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Event_0hti0w8">
+      <bpmn:outgoing>Flow_1csx6ge</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1m011py">
+      <bpmn:incoming>Flow_16jc43p</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sendTask id="Activity_0h6m8m6" name="Submeter Relatórios através das aplicações" zeebe:modelerTemplate="io.camunda.connectors.message.sendtask.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZwogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHdpZHRoPSIyMDAwIgogICBoZWlnaHQ9IjIwMDAiCiAgIHZpZXdCb3g9IjAgMCAyMDAwIDIwMDAiCiAgIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4KICA8cGF0aAogICAgIHN0eWxlPSJjb2xvcjojMDAwMDAwIgogICAgIGQ9Im0gMCwyODQgMjAwMCwwIC0xMDAwLDU1NCB6Ii8+CiAgPHBhdGgKICAgICBzdHlsZT0iY29sb3I6IzAwMDAwMCIKICAgICBkPSJtIDAsNDUyIDEwMDAsNTQ4IDEwMDAsLTU0OCAwLDEwOTYgLTIwMDAsMCB6Ii8+Cjwvc3ZnPgo=">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:sendMessage:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="Msg_Submete_Relatórios" target="messageName" />
+          <zeebe:input source="publish" target="correlationType.type" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="1" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.message.v1" />
+          <zeebe:header key="resultVariable" />
+          <zeebe:header key="resultExpression" />
+          <zeebe:header key="errorExpression" />
+          <zeebe:header key="retryBackoff" value="PT30S" />
+          <zeebe:header key="jobTimeout" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1csx6ge</bpmn:incoming>
+      <bpmn:outgoing>Flow_16jc43p</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="Flow_1csx6ge" sourceRef="Event_0hti0w8" targetRef="Activity_0h6m8m6" />
+    <bpmn:sequenceFlow id="Flow_16jc43p" sourceRef="Activity_0h6m8m6" targetRef="Event_1m011py" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1drhzh9">
+      <bpmndi:BPMNShape id="BPMNShape_0tqf8t1" bpmnElement="Participant_0dggy4c" isHorizontal="true">
+        <dc:Bounds x="132" y="82" width="507" height="178" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1yo6ny3" bpmnElement="Lane_1wppc41" isHorizontal="true">
+        <dc:Bounds x="162" y="82" width="468" height="178" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0uy0frw" bpmnElement="Event_0hti0w8">
+        <dc:Bounds x="215" y="164" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0grky83" bpmnElement="Event_1m011py">
+        <dc:Bounds x="542" y="164" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_11rpmq4" bpmnElement="Activity_0h6m8m6">
+        <dc:Bounds x="343" y="142" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_0t961dx" bpmnElement="Flow_1csx6ge">
+        <di:waypoint x="251" y="182" />
+        <di:waypoint x="343" y="182" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16jc43p_di" bpmnElement="Flow_16jc43p">
+        <di:waypoint x="443" y="182" />
+        <di:waypoint x="542" y="182" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
