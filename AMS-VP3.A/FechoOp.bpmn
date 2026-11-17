@@ -5,7 +5,7 @@
   </bpmn:collaboration>
   <bpmn:process id="Process_0kjqsfm" isExecutable="true">
     <bpmn:laneSet id="LaneSet_06j4q04">
-      <bpmn:lane id="Lane_1wppc41" name="Coordenador">
+      <bpmn:lane id="Lane_1mtbgad" name="Coordenador">
         <bpmn:flowNodeRef>Event_0hti0w8</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1m011py</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0h6m8m6</bpmn:flowNodeRef>
@@ -43,11 +43,11 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1drhzh9">
       <bpmndi:BPMNShape id="BPMNShape_0tqf8t1" bpmnElement="Participant_0dggy4c" isHorizontal="true">
-        <dc:Bounds x="132" y="82" width="507" height="178" />
+        <dc:Bounds x="132" y="100" width="507" height="160" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_1yo6ny3" bpmnElement="Lane_1wppc41" isHorizontal="true">
-        <dc:Bounds x="162" y="82" width="468" height="178" />
+      <bpmndi:BPMNShape id="Lane_1mtbgad_di" bpmnElement="Lane_1mtbgad" isHorizontal="true">
+        <dc:Bounds x="162" y="100" width="477" height="160" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0uy0frw" bpmnElement="Event_0hti0w8">
